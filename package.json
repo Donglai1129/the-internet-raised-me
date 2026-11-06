@@ -1,0 +1,14 @@
+{
+  "name": "the-internet-raised-me",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 4173 --directory dist",
+    "test": "node --test test/*.test.mjs",
+    "format": "prettier --write \"dist/**/*.{html,css,js}\" \"test/**/*.mjs\" \"*.json\" \".vscode/*.json\"",
+    "format:check": "prettier --check \"dist/**/*.{html,css,js}\" \"test/**/*.mjs\""
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}

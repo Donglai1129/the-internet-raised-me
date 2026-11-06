@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="An internet world that repeats, becomes familiar, and changes the way it speaks to you."
+    />
+    <title>THE INTERNET RAISED ME</title>
+    <link rel="stylesheet" href="world.css?v=inline1" />
+    <link rel="stylesheet" href="battle.css?v=inline1" />
+    <link rel="stylesheet" href="reaction.css?v=useronly1" />
+  </head>
+  <body>
+    <header>
+      <a class="home-link" href="#start">THE INTERNET <span>RAISED ME</span></a>
+      <nav><button id="sound" aria-pressed="false">sound off</button></nav>
+    </header>
+    <section id="cover">
+      <h1>
+        <span class="cover-the">THE</span><span class="cover-internet">INTERNET</span
+        ><a id="raised-link" href="#what-changed">RAISED ME</a>
+      </h1>
+      <div class="cover-copy">
+        <p>An experiment in growing up online.</p>
+        <button id="enter" disabled>enter ↗</button>
+      </div>
+      <div class="cover-teasers" aria-hidden="true">
+        <img src="assets/memes/blue-wolf.jpg" alt="" /><img
+          src="assets/memes/download.jpg"
+          alt=""
+        />
+      </div>
+    </section>
+    <aside class="meme-rail rail-left" aria-hidden="true"></aside>
+    <aside class="meme-rail rail-right" aria-hidden="true"></aside>
+    <main id="experience" hidden>
+      <div id="memory" aria-hidden="true"></div>
+      <div id="stream"></div>
+      <div id="threshold"></div>
+      <div id="next-area">
+        <button id="continue">keep scrolling ↓</button
+        ><span id="scroll-sentinel" aria-hidden="true"></span>
+      </div>
+    </main>
+    <footer>
+      <button id="reveal">what shaped this page?</button
+      ><button id="restart">start over</button
+      ><button id="motion" aria-pressed="false">pause memes</button
+      ><a href="credits.html" target="_blank">sources</a>
+    </footer>
+    <dialog id="reference" aria-label="Internet reference">
+      <div class="window-bar">
+        <span>open reference</span
+        ><button id="close-reference" aria-label="Close reference">×</button>
+      </div>
+      <div id="reference-body"></div>
+    </dialog>
+    <dialog id="revelation" aria-labelledby="reveal-title">
+      <div class="window-bar">
+        <span>what shaped this page</span
+        ><button id="close-reveal" aria-label="Close reveal">×</button>
+      </div>
+      <div id="reveal-body"></div>
+    </dialog>
+    <aside id="feed-question" aria-label="Pick a meme" aria-live="polite" hidden></aside>
+    <div id="announcement" aria-live="polite" class="sr-only"></div>
+    <script type="module" src="app.js?v=useronly1"></script>
+  </body>
+</html>

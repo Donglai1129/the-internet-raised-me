@@ -1,0 +1,315 @@
+.meme-battle-frame {
+  position: relative;
+  height: 630px;
+  margin: 0 4%;
+  overflow: hidden;
+}
+.meme-battle {
+  height: 100%;
+  position: relative;
+  text-align: center;
+  padding-top: 25px;
+  font: 13px/1.4 Arial;
+}
+.battle-instruction {
+  font-size: 12px;
+  min-height: 18px;
+  margin: 10px 0;
+}
+.battle-arena {
+  position: relative;
+  height: 470px;
+  isolation: isolate;
+}
+.battle-result {
+  font: 23px Arial;
+  min-height: 30px;
+}
+.battle-saved {
+  font: 10px Arial;
+  color: #666;
+  min-height: 15px;
+  margin-top: 8px;
+}
+.meme-battle .fighter {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: clamp(220px, 25vw, 320px);
+  height: 350px;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  transition:
+    translate 0.18s,
+    opacity 0.25s;
+  z-index: 2;
+  touch-action: manipulation;
+  user-select: none;
+}
+.meme-battle .fighter:nth-child(2) {
+  z-index: 3;
+}
+.meme-battle .rig {
+  height: 290px;
+  position: relative;
+  display: block;
+}
+.meme-battle .rig svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  stroke: #111;
+  stroke-width: 6;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.meme-battle .meme-body {
+  position: absolute;
+  top: 42px;
+  left: 24%;
+  width: 52%;
+  height: 155px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.meme-battle .meme-body img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  pointer-events: none;
+}
+.meme-battle .arm-left {
+  transform-origin: 88px 120px;
+  animation: left-jab 0.65s alternate infinite;
+}
+.meme-battle .arm-right {
+  transform-origin: 212px 120px;
+  animation: right-jab 0.55s alternate infinite;
+}
+.meme-battle .leg-left {
+  transform-origin: 125px 187px;
+  animation: kick 0.75s alternate infinite;
+}
+.meme-battle .leg-right {
+  transform-origin: 175px 187px;
+  animation: kick 0.63s alternate-reverse infinite;
+}
+.meme-battle .fighter:nth-child(2) .arm-left {
+  animation-delay: -0.3s;
+}
+.meme-battle .fighter:nth-child(3) .arm-right {
+  animation-delay: -0.2s;
+}
+.meme-battle .fighter-label {
+  display: block;
+  font-size: 11px;
+  margin: 0 0 9px;
+}
+.meme-battle .health {
+  display: block;
+  height: 3px;
+  background: #eee;
+  width: 42%;
+  margin: auto;
+  overflow: hidden;
+}
+.meme-battle .health > i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #111;
+  transition: width 0.2s;
+}
+.meme-battle .power-label {
+  display: block;
+  font-size: 11px;
+  color: blue;
+  margin: 7px 0;
+}
+.meme-battle .chosen .meme-body {
+  outline: 2px solid blue;
+  outline-offset: 6px;
+}
+.meme-battle .chosen .health > i {
+  background: blue;
+}
+.meme-battle .striking {
+  translate: calc(var(--direction, 1) * 25px) -8px;
+}
+.meme-battle .striking .arm-right {
+  animation: none;
+  transform: rotate(-60deg);
+}
+.meme-battle .hit .meme-body {
+  animation: ouch 0.18s;
+}
+.meme-battle .boost .meme-body {
+  animation: boost 0.25s;
+}
+.meme-battle .boost:after {
+  content: '↑';
+  position: absolute;
+  right: 20%;
+  top: 5px;
+  font: 35px Arial;
+  color: blue;
+  animation: power-float 0.4s forwards;
+}
+.meme-battle .out {
+  opacity: 0.18;
+  pointer-events: none;
+}
+.meme-battle .out .rig {
+  rotate: 12deg;
+  translate: 0 35px;
+}
+.meme-battle .out svg *,
+.meme-battle .champion svg *,
+.meme-battle .paused svg * {
+  animation-play-state: paused;
+}
+.meme-battle .champion {
+  z-index: 5 !important;
+}
+.meme-battle .champion .rig {
+  scale: 1.12;
+}
+.meme-battle .champion .power-label {
+  font-weight: bold;
+}
+.meme-battle .striking {
+  translate: var(--lunge-x, 25px) var(--lunge-y, -8px);
+}
+.meme-battle .hit:before {
+  content: '✷';
+  position: absolute;
+  left: 42%;
+  top: 25%;
+  font: 65px Arial;
+  color: blue;
+  z-index: 6;
+  pointer-events: none;
+}
+.meme-battle .rig svg {
+  transform-origin: 50% 57%;
+  animation: sprout 0.7s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+.meme-battle .battle-paused svg * {
+  animation-play-state: paused;
+}
+.meme-battle.battle-paused svg * {
+  animation-play-state: paused;
+}
+@keyframes left-jab {
+  from {
+    transform: rotate(12deg);
+  }
+  to {
+    transform: rotate(-32deg);
+  }
+}
+@keyframes right-jab {
+  from {
+    transform: rotate(-12deg);
+  }
+  to {
+    transform: rotate(38deg);
+  }
+}
+@keyframes kick {
+  from {
+    transform: rotate(-10deg);
+  }
+  to {
+    transform: rotate(14deg);
+  }
+}
+@keyframes ouch {
+  50% {
+    translate: 8px 0;
+    opacity: 0.5;
+  }
+}
+@keyframes boost {
+  50% {
+    scale: 1.13;
+  }
+}
+@keyframes power-float {
+  to {
+    translate: 0 -30px;
+    opacity: 0;
+  }
+}
+@keyframes sprout {
+  from {
+    opacity: 0;
+    scale: 0.3 0.05;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@media (max-width: 650px) {
+  .meme-battle-frame {
+    height: 830px;
+    margin: 0 28px;
+  }
+  .battle-arena {
+    height: 680px;
+  }
+  .meme-battle .fighter {
+    width: 200px;
+    height: 260px;
+  }
+  .meme-battle .rig {
+    height: 220px;
+  }
+  .meme-battle .meme-body {
+    top: 32px;
+    height: 117px;
+  }
+  .meme-battle .fighter:nth-child(1) {
+    left: 25%;
+    top: 27%;
+  }
+  .meme-battle .fighter:nth-child(2) {
+    left: 75%;
+    top: 27%;
+  }
+  .meme-battle .fighter:nth-child(3) {
+    left: 50%;
+    top: 72%;
+  }
+  .meme-battle .fighter-label,
+  .meme-battle .power-label {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .meme-battle *,
+  .meme-battle *:before,
+  .meme-battle *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.meme-battle .floor {
+  stroke: #ddd;
+  stroke-width: 1;
+}
+.meme-battle .shadow {
+  stroke: none;
+  fill: #00000008;
+}
+
+.meme-battle .champion .rig svg,
+.meme-battle .out .rig svg {
+  animation: none;
+}
